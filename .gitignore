@@ -1,0 +1,53 @@
+# ============================================================
+# ROOT .gitignore untuk project WebTora
+# ============================================================
+
+# -----------------------------------------------
+# ⚠️  SECRET FILES - JANGAN PERNAH DICOMMIT!
+# -----------------------------------------------
+backend/.env
+backend/.env.*
+!backend/.env.example
+frontend-nextjs-change-detection/.env.local
+frontend-nextjs-change-detection/.env.*.local
+!frontend-nextjs-change-detection/.env.example
+
+# -----------------------------------------------
+# Python / Django
+# -----------------------------------------------
+backend/venv/
+backend/.venv/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/*.pyc
+backend/*.pyo
+backend/*.pyd
+backend/.pytest_cache/
+backend/media/
+backend/staticfiles/
+backend/*.sqlite3
+backend/.env
+
+# -----------------------------------------------
+# Node / Next.js
+# -----------------------------------------------
+frontend-nextjs-change-detection/node_modules/
+frontend-nextjs-change-detection/.next/
+frontend-nextjs-change-detection/out/
+frontend-nextjs-change-detection/.vercel/
+
+# -----------------------------------------------
+# Database Backup (sensitif, jangan dicommit)
+# -----------------------------------------------
+backend/backup.sql
+backend/backup_terbaru.sql
+
+# -----------------------------------------------
+# IDE & Editor
+# -----------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
