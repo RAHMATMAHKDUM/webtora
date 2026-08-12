@@ -60,8 +60,14 @@ else:
     CORS_ALLOWED_ORIGINS = config(
         'CORS_ALLOWED_ORIGINS',
         default='http://localhost:3000',
-        cast=lambda v: [s.strip() for s in v.split(',')]
+        cast=lambda v: [s.strip().rstrip('/') for s in v.split(',')]
     )
+
+CSRF_TRUSTED_ORIGINS = config(
+    'CSRF_TRUSTED_ORIGINS',
+    default='http://localhost:3000',
+    cast=lambda v: [s.strip().rstrip('/') for s in v.split(',')]
+)
 
 ROOT_URLCONF = 'config.urls'
 
@@ -164,8 +170,8 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
 
 # DEFAULT_FROM_EMAIL = config(
 #     'DEFAULT_FROM_EMAIL',
@@ -174,7 +180,7 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='noreply@example.com')
-FIELD_ENCRYPTION_KEY = config('FIELD_ENCRYPTION_KEY')
+FIELD_ENCRYPTION_KEY = config('FIELD_ENCRYPTION_KEY', default='default-insecure-key-change-this-in-production')
 
 TELEGRAM_BOT_TOKEN = config('TELEGRAM_BOT_TOKEN', default='')
 TELEGRAM_BOT_USERNAME = config('TELEGRAM_BOT_USERNAME', default='')
